@@ -7,6 +7,7 @@ from test.activity_page import Test_activity_page
 from test.sys_user_list import Test_sys_user_list
 from test.package_add import Test_package_add
 # from config.config import logger
+from send_email.email import send_email
 import os
 import sys
 report_path = os.path.join(os.getcwd(),'test_report')
@@ -28,6 +29,13 @@ def suite():
 
     return Test
 
+# def report_address(reports_address):
+#     test_reports_list = os.listdir(report_path)
+#     new_test_reports_list = sorted(test_reports_list)
+#     the_last_report = new_test_reports_list[-1]
+#     the_last_report_address = os.path.join(reports_address,the_last_report)
+#     return the_last_report_address
+
 if __name__ == '__main__':
     now = time.strftime('%Y-%m-%d %H-%M')
 
@@ -40,5 +48,8 @@ if __name__ == '__main__':
     fp = open(filename, 'wb+')
 
 
+
     runner = HTMLTestRunner(stream=fp,title = '接口测试',description='描述',verbosity=1)
     runner.run(suite())
+
+

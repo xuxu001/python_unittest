@@ -6,6 +6,7 @@ from  test.student_page import Test_student_page
 from test.activity_page import Test_activity_page
 from test.sys_user_list import Test_sys_user_list
 from test.package_add import Test_package_add
+from test.package_list import Package_list
 # from config.config import logger
 from send_email.email import send_email
 import os
@@ -25,7 +26,8 @@ def suite():
     test_activity_page = unittest.makeSuite(Test_activity_page,'test')
     test_sys_user_list = unittest.makeSuite(Test_sys_user_list,'test')
     test_package_add = unittest.makeSuite(Test_package_add,'test')
-    Test = unittest.TestSuite([test_package_add,test_login,test_sys_user_list,test_student_page,test_activity_page,test_add_sys_user])
+    test_package_list = unittest.makeSuite(Package_list,'test')
+    Test = unittest.TestSuite([test_package_list,test_package_add,test_login,test_sys_user_list,test_student_page,test_activity_page,test_add_sys_user])
 
     return Test
 

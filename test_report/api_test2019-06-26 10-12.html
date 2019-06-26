@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>接口测试</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>接口测试</h1>
+<p class='attribute'><strong>Start Time:</strong> 2019-06-26 10:12:07</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:10.280352</p>
+<p class='attribute'><strong>Status:</strong> Pass 14 Failure 13</p>
+
+<p class='description'>描述</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass'>
+    <td>test.package_add.Test_package_add</td>
+    <td>5</td>
+    <td>2</td>
+    <td>3</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',5)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_package_add</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        fail</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\package_add.py", line 39, in test_package_add
+    self.assertEqual(r,expect)
+AssertionError: 'request is forbidden' != '套餐名称大于12'
+- request is forbidden
++ 套餐名称大于12
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_package_add_001</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft1.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_package_add_price</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.3')" >
+        fail</a>
+
+    <div id='div_ft1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.3: Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\package_add.py", line 50, in test_package_add_price
+    self.assertEqual(r,expect)
+AssertionError: 'request is forbidden' != '价格不能非数字'
+- request is forbidden
++ 价格不能非数字
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_package_add_repeat</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4')" >
+        fail</a>
+
+    <div id='div_ft1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.4: Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\package_add.py", line 60, in test_package_add_repeat
+    self.assertEqual(r,expect)
+AssertionError: 'request is forbidden' != '套餐名称重复'
+- request is forbidden
++ 套餐名称重复
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_package_add_type_2</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test.test_login.Test_login</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',6)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_null</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_password_error</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_password_null</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_ture</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_username_error</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_username_null</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test.sys_user_list.Test_sys_user_list</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',3)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sales_list</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sys_list</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_yun_list</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test.student_page.Test_student_page</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',2)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_student_page</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\student_page.py", line 22, in test_student_page
+    logger.info(url, header, data, expect)
+Message: 'https://api.inewmaker.com/student/page'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'page': 1, 'pageSize': 10}, 'success')
+{"msg":"success","code":0,"data":{"totalCount":529,"pageSize":10,"totalPage":53,"currPage":1,"list":[{"id":90002,"code":659,"city":"阳泉市","companyName":"CES","brand":"JQK","isEdit":0,"founderName":null,"productName":"AA","productType":"茗茶冲饮","productCategory":"食品","packageName":"套餐名称","contractEndTime":0,"contractId":60007,"contractType":null,"packageId":90001,"allRightsSize":2,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":60003,"code":658,"city":"石家庄市","companyName":"测试","brand":"测试","isEdit":0,"founderName":null,"productName":"测试","productType":"厨房卫浴","productCategory":"居家","packageName":"测试套餐权益交付","contractEndTime":0,"contractId":90003,"contractType":null,"packageId":12,"allRightsSize":2,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":120002,"studentPackageId":90003,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":60002,"code":657,"city":"福州市","companyName":"测试上市公司","brand":"测试品牌","isEdit":0,"founderName":null,"productName":"测试","productType":"视听影音","productCategory":"数码家电","packageName":"测试套餐谨慎使用","contractEndTime":0,"contractId":90002,"contractType":null,"packageId":30004,"allRightsSize":2,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":120001,"studentPackageId":90002,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":30007,"code":656,"city":"市辖区","companyName":"公司","brand":"品牌u","isEdit":0,"founderName":null,"productName":"111","productType":"家纺","productCategory":"居家","packageName":"测试套餐2勿用","contractEndTime":4681296000000,"contractId":30018,"contractType":null,"packageId":30005,"allRightsSize":3,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":60012,"studentPackageId":30018,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":521,"code":655,"city":"成都市","companyName":"四川玖正国际贸易有限公司","brand":"子均邓公液","isEdit":0,"founderName":null,"productName":"浓香型白酒","productType":"酒水饮料","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":521,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":30002,"studentPackageId":521,"invoiceTime":"2019-05-05T16:00:00.000Z","number":"39016744","companyName":"四川玖正国际贸易有限公司","taxNumber":"91510100MA6CG7F35U","address":"成都高新区盛安街401号1栋1单元13楼1304号","phone":"028-65220012","bank":"中国民生银行成都铁像寺支行","account":"630163007"}},{"id":520,"code":654,"city":"唐山市","companyName":"890","brand":"890","isEdit":1,"founderName":"","productName":"dsa","productType":"家纺","productCategory":"居家","packageName":"13.9A","contractEndTime":4684233600000,"contractId":520,"contractType":null,"packageId":8,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":30001,"studentPackageId":520,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":519,"code":653,"city":"市辖区","companyName":"上海康泰莱生物医药工程有限公司","brand":"","isEdit":1,"founderName":"王卫东","productName":"植物健康粉","productType":"滋补营养品/保健膳食","productCategory":"食品","packageName":"3.9","contractEndTime":4681209600000,"contractId":519,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":518,"code":652,"city":"昆明市","companyName":"富民世外蓝香蓝莓种植开发有限公司","brand":"蓝莓老爸","isEdit":0,"founderName":null,"productName":"蓝莓鲜果","productType":"水产肉类/新鲜蔬果/熟食","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":518,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":517,"code":651,"city":"中山市","companyName":"有度衣品(中山)科技有限责任公司","brand":"ROBOT","isEdit":0,"founderName":null,"productName":"衬衫","productType":"男装","productCategory":"服饰箱包","packageName":"13.9B","contractEndTime":0,"contractId":517,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":516,"code":650,"city":"武汉市","companyName":"武汉巢轩商业有限公司","brand":"九楚","isEdit":1,"founderName":"李英卫","productName":"女性高端养生美颜产品","productType":"滋补保健","productCategory":"食品","packageName":"3.9","contractEndTime":4681382400000,"contractId":516,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null}]}}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_student_page_add</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        pass</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.2: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\student_page.py", line 34, in test_student_page_add
+    logger.info(url,header,data,expect)
+Message: 'https://api.inewmaker.com/student/page'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'page': 1, 'pageSize': 100}, 'success')
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1037, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'gbk' codec can't encode character '\ufa38' in position 33282: illegal multibyte sequence
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\student_page.py", line 36, in test_student_page_add
+    logger.info(res.text)
+Message: '{"msg":"success","code":0,"data":{"totalCount":529,"pageSize":100,"totalPage":6,"currPage":1,"list":[{"id":90002,"code":659,"city":"阳泉市","companyName":"CES","brand":"JQK","isEdit":0,"founderName":null,"productName":"AA","productType":"茗茶冲饮","productCategory":"食品","packageName":"套餐名称","contractEndTime":0,"contractId":60007,"contractType":null,"packageId":90001,"allRightsSize":2,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":60003,"code":658,"city":"石家庄市","companyName":"测试","brand":"测试","isEdit":0,"founderName":null,"productName":"测试","productType":"厨房卫浴","productCategory":"居家","packageName":"测试套餐权益交付","contractEndTime":0,"contractId":90003,"contractType":null,"packageId":12,"allRightsSize":2,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":120002,"studentPackageId":90003,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":60002,"code":657,"city":"福州市","companyName":"测试上市公司","brand":"测试品牌","isEdit":0,"founderName":null,"productName":"测试","productType":"视听影音","productCategory":"数码家电","packageName":"测试套餐谨慎使用","contractEndTime":0,"contractId":90002,"contractType":null,"packageId":30004,"allRightsSize":2,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":120001,"studentPackageId":90002,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":30007,"code":656,"city":"市辖区","companyName":"公司","brand":"品牌u","isEdit":0,"founderName":null,"productName":"111","productType":"家纺","productCategory":"居家","packageName":"测试套餐2勿用","contractEndTime":4681296000000,"contractId":30018,"contractType":null,"packageId":30005,"allRightsSize":3,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":60012,"studentPackageId":30018,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":521,"code":655,"city":"成都市","companyName":"四川玖正国际贸易有限公司","brand":"子均邓公液","isEdit":0,"founderName":null,"productName":"浓香型白酒","productType":"酒水饮料","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":521,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":30002,"studentPackageId":521,"invoiceTime":"2019-05-05T16:00:00.000Z","number":"39016744","companyName":"四川玖正国际贸易有限公司","taxNumber":"91510100MA6CG7F35U","address":"成都高新区盛安街401号1栋1单元13楼1304号","phone":"028-65220012","bank":"中国民生银行成都铁像寺支行","account":"630163007"}},{"id":520,"code":654,"city":"唐山市","companyName":"890","brand":"890","isEdit":1,"founderName":"","productName":"dsa","productType":"家纺","productCategory":"居家","packageName":"13.9A","contractEndTime":4684233600000,"contractId":520,"contractType":null,"packageId":8,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":30001,"studentPackageId":520,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":519,"code":653,"city":"市辖区","companyName":"上海康泰莱生物医药工程有限公司","brand":"","isEdit":1,"founderName":"王卫东","productName":"植物健康粉","productType":"滋补营养品/保健膳食","productCategory":"食品","packageName":"3.9","contractEndTime":4681209600000,"contractId":519,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":518,"code":652,"city":"昆明市","companyName":"富民世外蓝香蓝莓种植开发有限公司","brand":"蓝莓老爸","isEdit":0,"founderName":null,"productName":"蓝莓鲜果","productType":"水产肉类/新鲜蔬果/熟食","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":518,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":517,"code":651,"city":"中山市","companyName":"有度衣品(中山)科技有限责任公司","brand":"ROBOT","isEdit":0,"founderName":null,"productName":"衬衫","productType":"男装","productCategory":"服饰箱包","packageName":"13.9B","contractEndTime":0,"contractId":517,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":516,"code":650,"city":"武汉市","companyName":"武汉巢轩商业有限公司","brand":"九楚","isEdit":1,"founderName":"李英卫","productName":"女性高端养生美颜产品","productType":"滋补保健","productCategory":"食品","packageName":"3.9","contractEndTime":4681382400000,"contractId":516,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":515,"code":649,"city":"九江市","companyName":"九江本草膏集生物科技有限公司","brand":"本草膏集","isEdit":0,"founderName":null,"productName":"中药蜂蜜膏","productType":"滋补营养品/保健膳食","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":515,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":514,"code":648,"city":"中卫市","companyName":"宁夏冰杞凌供应链管理有限公司","brand":"冰杞凌","isEdit":0,"founderName":null,"productName":"枸杞营养冰淇淋","productType":"零食/坚果/特产","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":514,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":30006,"code":647,"city":"广州市","companyName":"广州东飞凫网络科技有限公司","brand":"冰茶鸭","isEdit":0,"founderName":null,"productName":"休闲卤制品","productType":"零食/坚果/特产","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":30006,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":30005,"code":646,"city":"秦皇岛市","companyName":"测试公司权益交付测试","brand":"111","isEdit":1,"founderName":"测试手机","productName":"111","productType":"酒类","productCategory":"食品","packageName":"5.88","contractEndTime":4682419200000,"contractId":528,"contractType":null,"packageId":30006,"allRightsSize":4,"usedRightsSize":3,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":30009,"studentPackageId":528,"invoiceTime":"2019-05-22T16:00:00.000Z","number":"3123213213213","companyName":"发票公司","taxNumber":"3123214124324","address":"浙江省","phone":"18682260403","bank":"支行","account":"3214132434"}},{"id":30004,"code":645,"city":"苏州市","companyName":"苏州张根木生物科技有限公司","brand":"张根木","isEdit":0,"founderName":null,"productName":"张根木祖方基酒","productType":"酒类","productCategory":"食品","packageName":"3.9","contractEndTime":0,"contractId":30004,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":30003,"code":644,"city":"苏州市","companyName":"上海希洛服饰有限公司","brand":"至白","isEdit":0,"founderName":null,"productName":"衬衫","productType":"男装","productCategory":"服饰箱包","packageName":"3.9","contractEndTime":0,"contractId":30003,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":30002,"code":643,"city":"市辖区","companyName":"北京嗯哈文化创意有限公司","brand":"年衣","isEdit":0,"founderName":null,"productName":"童装","productType":"女装","productCategory":"服饰箱包","packageName":"3.9","contractEndTime":4680000000000,"contractId":30002,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":513,"code":642,"city":"长治市","companyName":"测试公司","brand":"测试","isEdit":1,"founderName":"测试","productName":"测试","productType":"咖啡/麦片/冲饮","productCategory":"食品","packageName":"5.88","contractEndTime":4683715200000,"contractId":60006,"contractType":null,"packageId":30006,"allRightsSize":4,"usedRightsSize":1,"isComplete":false,"isInvoice":true,"invoiceVO":{"id":90005,"studentPackageId":60006,"invoiceTime":"","number":"","companyName":"","taxNumber":"","address":null,"phone":"","bank":"","account":""}},{"id":448,"code":641,"city":null,"companyName":"杭州泳萌昱榭室内设计工作室","brand":"Crysatl X","isEdit":0,"founderName":null,"productName":"#N/A","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":448,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":339,"code":640,"city":null,"companyName":"宁波传家电子商务有限公司","brand":"俞家年糕","isEdit":0,"founderName":null,"productName":"粮油米面","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":339,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":159,"code":639,"city":null,"companyName":"上海润米科技有限公司","brand":"90分","isEdit":0,"founderName":null,"productName":"箱包，旅行箱","productType":null,"productCategory":null,"packageName":"2.9A","contractEndTime":1563120000000,"contractId":159,"contractType":null,"packageId":30001,"allRightsSize":4,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":124,"code":638,"city":null,"companyName":"上海航融贸易有限公司","brand":"北欧欧慕","isEdit":0,"founderName":null,"productName":"折叠水壶等","productType":null,"productCategory":null,"packageName":"2.9A","contractEndTime":1559232000000,"contractId":124,"contractType":null,"packageId":30001,"allRightsSize":4,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":509,"code":637,"city":null,"companyName":"云南褚氏农业有限公司","brand":"褚橙","isEdit":0,"founderName":null,"productName":"褚橙","productType":null,"productCategory":null,"packageName":"BD","contractEndTime":1565193600000,"contractId":509,"contractType":null,"packageId":30003,"allRightsSize":0,"usedRightsSize":0,"isComplete":true,"isInvoice":false,"invoiceVO":null},{"id":501,"code":636,"city":null,"companyName":"上海惠心化妆品有限公司","brand":"兰心蕙质","isEdit":0,"founderName":null,"productName":"国产护肤品","productType":null,"productCategory":null,"packageName":"BD","contractEndTime":1565193600000,"contractId":501,"contractType":null,"packageId":30003,"allRightsSize":0,"usedRightsSize":0,"isComplete":true,"isInvoice":false,"invoiceVO":null},{"id":462,"code":596,"city":null,"companyName":"成都帝标智能家居有限公司","brand":"帝标家居","isEdit":0,"founderName":null,"productName":"沙发、软床、床垫","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":462,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":461,"code":595,"city":null,"companyName":"肇庆市现代筑美家居有限公司","brand":"现代筑美家居","isEdit":0,"founderName":null,"productName":"木门、地板、橱柜、卫浴柜、衣柜、收纳柜","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":461,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":459,"code":593,"city":null,"companyName":"广东金意陶陶瓷集团有限公司","brand":"金意陶","isEdit":0,"founderName":null,"productName":"仿古砖","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":459,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":458,"code":592,"city":null,"companyName":"广东顶固集创家居股份有限公司","brand":"顶固","isEdit":0,"founderName":null,"productName":"智能锁、晾衣机","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":458,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":457,"code":591,"city":null,"companyName":"索菲亚家居股份有限公司","brand":"索菲亚","isEdit":0,"founderName":null,"productName":"全屋定制","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":457,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":456,"code":590,"city":null,"companyName":"梦天木门集团有限公司","brand":"梦天","isEdit":0,"founderName":null,"productName":"木门及全屋","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":456,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":455,"code":589,"city":null,"companyName":"爱驰家居（天津）有限公司","brand":"璞时","isEdit":0,"founderName":null,"productName":"家具","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":455,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":500,"code":579,"city":null,"companyName":"上海云姜生物科技有限公司","brand":"云姜","isEdit":0,"founderName":null,"productName":"小黄姜原酿酒","productType":null,"productCategory":null,"packageName":"20.9","contractEndTime":1565193600000,"contractId":500,"contractType":null,"packageId":11,"allRightsSize":18,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":499,"code":578,"city":null,"companyName":"贵州省仁怀市茅台镇文中酒业有限公司","brand":"文中酒","isEdit":0,"founderName":null,"productName":"酱香型白酒","productType":null,"productCategory":null,"packageName":"20.9","contractEndTime":1565193600000,"contractId":499,"contractType":null,"packageId":11,"allRightsSize":18,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":460,"code":577,"city":null,"companyName":"生活家（北京）家居装饰有限公司","brand":"生活家","isEdit":0,"founderName":null,"productName":"轻奢装、软装包","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":460,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":446,"code":575,"city":null,"companyName":"四川耘和康华医疗科技有限公司","brand":"医草集","isEdit":0,"founderName":null,"productName":"驱蚊产品","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":446,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":498,"code":574,"city":null,"companyName":"佛山市客都女孩文化传播有限公司","brand":"客家女孩","isEdit":0,"founderName":null,"productName":"月悦、欢悦、心悦、家悦、娘悦","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":498,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":497,"code":573,"city":null,"companyName":"芜湖纯米电子科技有限公司","brand":"TOKIT","isEdit":0,"founderName":null,"productName":"电饭煲 /电磁炉/锅","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":497,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":496,"code":572,"city":null,"companyName":"福建秋满枝实业有限公司","brand":"秋满枝","isEdit":0,"founderName":null,"productName":"水果","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":496,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":495,"code":571,"city":null,"companyName":"北京品茶在线电子商务有限公司","brand":"碧生源","isEdit":0,"founderName":null,"productName":"小饼纤生代餐饼干，喵喵酵胶原蛋白果冻","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":495,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":494,"code":570,"city":null,"companyName":" 配方化妆品科技（广州）有限公司","brand":"水言","isEdit":0,"founderName":null,"productName":"化妆护肤品","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":494,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":493,"code":569,"city":null,"companyName":" 佛山市顺德区朗易网络科技有限公司","brand":"有点农场","isEdit":0,"founderName":null,"productName":"花茶","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":493,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":492,"code":568,"city":null,"companyName":"福建春辉生物工程有限公司","brand":"九展","isEdit":0,"founderName":null,"productName":"化妆品","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":492,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":491,"code":567,"city":null,"companyName":"新疆万家康生物科技有限公司","brand":"时时养","isEdit":0,"founderName":null,"productName":"小麦胚芽(后续两个月内还有沙棘粉杏仁蛋白粉核桃粉鹰嘴豆粉)","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":491,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":490,"code":566,"city":null,"companyName":"上海乐宝日化股份有限公司","brand":"魔介","isEdit":0,"founderName":null,"productName":"化妆品","productType":null,"productCategory":null,"packageName":"20.9","contractEndTime":1565193600000,"contractId":490,"contractType":null,"packageId":11,"allRightsSize":18,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":489,"code":565,"city":null,"companyName":"诸暨素人贸易有限公司","brand":"HELLO MONDAY","isEdit":0,"founderName":null,"productName":"袜子","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":489,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":488,"code":564,"city":null,"companyName":"东阳市梵沐记工艺美术有限公司","brand":"梵沐记","isEdit":0,"founderName":null,"productName":"木梳、木艺书签、文创礼品、陶瓷茶具、饰品","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":488,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":487,"code":563,"city":null,"companyName":"上海集景贸易有限公司","brand":"花间公主","isEdit":0,"founderName":null,"productName":"女包","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":487,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":486,"code":562,"city":null,"companyName":"浙江飞剑工贸有限公司","brand":"飞剑","isEdit":0,"founderName":null,"productName":"钛杯、运动杯壶","productType":null,"productCategory":null,"packageName":"13.9B","contractEndTime":1565193600000,"contractId":486,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":485,"code":561,"city":null,"companyName":"杭州巴格欧雷咖啡有限公司","brand":"Bag only","isEdit":0,"founderName":null,"productName":"精品咖啡豆：意式和手冲","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":485,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":484,"code":560,"city":null,"companyName":"然晟（上海）实业发展有限公司","brand":"邦恩贝","isEdit":0,"founderName":null,"productName":"植物驱蚊手环，植物驱蚊喷雾剂，植物精华护理乳","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":484,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":483,"code":559,"city":null,"companyName":"调调（北京）科技有限公司","brand":"调调","isEdit":0,"founderName":null,"productName":"灯具","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":483,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":482,"code":558,"city":null,"companyName":"杭州泰北贸易有限公司","brand":"见芷","isEdit":0,"founderName":null,"productName":"洗护用品","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":482,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":481,"code":557,"city":null,"companyName":"真之源（天津）商贸有限公司","brand":"一江水","isEdit":0,"founderName":null,"productName":"口红","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":481,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":480,"code":556,"city":null,"companyName":"北京米物科技有限公司","brand":"米物","isEdit":0,"founderName":null,"productName":"桌面外设系列：键盘，鼠标，鼠标垫，名片盒，工具箱，笔记本支架等等","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":480,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":479,"code":552,"city":null,"companyName":"南京紫物农业科技发展有限公司","brand":"紫物","isEdit":0,"founderName":null,"productName":"蓝莓酒","productType":null,"productCategory":null,"packageName":"13.9B","contractEndTime":1565193600000,"contractId":479,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":33,"code":551,"city":null,"companyName":"苏州市相城区阳澄湖镇澄优水产养殖有限公司","brand":"欧鲜生","isEdit":0,"founderName":null,"productName":"小龙虾，大闸蟹","productType":null,"productCategory":null,"packageName":"2.9A","contractEndTime":1556640000000,"contractId":33,"contractType":null,"packageId":30001,"allRightsSize":4,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":478,"code":550,"city":null,"companyName":"龙泉剑村艺术品有限公司 ","brand":"剑村","isEdit":0,"founderName":null,"productName":"剑村：高端手作中国刀剑 如来生：高端手作茶器，法器，文房用具，香器等金属艺品","productType":null,"productCategory":null,"packageName":"3.9C","contractEndTime":1565193600000,"contractId":478,"contractType":null,"packageId":6,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":477,"code":549,"city":null,"companyName":"江苏百志影贸易有限公司","brand":"二十七度阳光","isEdit":0,"founderName":null,"productName":"茗茶、花茶","productType":null,"productCategory":null,"packageName":"13.9B","contractEndTime":1565193600000,"contractId":477,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":476,"code":548,"city":null,"companyName":"广州怡能生物科技有限公司","brand":"怡能","isEdit":0,"founderName":null,"productName":"怡能益生菌","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":476,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":475,"code":547,"city":null,"companyName":"上海物声文化发展有限公司","brand":"润物声","isEdit":0,"founderName":null,"productName":" 家居、文具、茶具","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":475,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":474,"code":546,"city":null,"companyName":"义乌市朴西贸易有限公司","brand":"朴西","isEdit":0,"founderName":null,"productName":"家居鞋","productType":null,"productCategory":null,"packageName":"13.9B","contractEndTime":1565193600000,"contractId":474,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":473,"code":545,"city":null,"companyName":"武夷星茶业有限公司","brand":"武夷星","isEdit":0,"founderName":null,"productName":"茶叶","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":473,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":472,"code":544,"city":null,"companyName":"厦门美格金顿科技有限公司","brand":"高特","isEdit":0,"founderName":null,"productName":"太阳镜，光学框","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":472,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":471,"code":543,"city":null,"companyName":"正雄箱包(河源)有限公司","brand":"正雄箱包","isEdit":0,"founderName":null,"productName":" 拉杆箱/儿童背包/儿童拉杆箱","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":471,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":470,"code":542,"city":null,"companyName":"内蒙古蒙都羊业食品股份有限公司","brand":"蒙都","isEdit":0,"founderName":null,"productName":"牛羊肉","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":470,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":469,"code":541,"city":null,"companyName":"珠海机甲天下科技有限公司","brand":"机械党","isEdit":0,"founderName":null,"productName":"金属机器人","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":469,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":468,"code":540,"city":null,"companyName":"大马窝窝","brand":"大马窝窝","isEdit":0,"founderName":null,"productName":"仙炖燕窝","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":468,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":467,"code":539,"city":null,"companyName":"俞文清燕窝饮品有限公司","brand":"俞文清","isEdit":0,"founderName":null,"productName":"燕窝饮料","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":467,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":466,"code":538,"city":null,"companyName":"重庆新云潞咖啡产业有限公司","brand":"马戏咖啡","isEdit":0,"founderName":null,"productName":"咖啡","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":466,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":465,"code":537,"city":null,"companyName":"北京普世安生物科技有限公司","brand":"再出发","isEdit":0,"founderName":null,"productName":"洗发护发","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":465,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":464,"code":536,"city":null,"companyName":"上海旗凌实业有限公司","brand":"OMNICUP","isEdit":0,"founderName":null,"productName":"便携式车载多功能咖啡机","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":464,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":463,"code":535,"city":null,"companyName":"邦铭农信科技（北京）有限公司","brand":"快乐的蛋","isEdit":0,"founderName":null,"productName":"鸡蛋","productType":null,"productCategory":null,"packageName":"3.9B","contractEndTime":1565193600000,"contractId":463,"contractType":null,"packageId":5,"allRightsSize":15,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":454,"code":534,"city":null,"companyName":"杭州素造工业设计有限公司","brand":"HOLOHOLO","isEdit":0,"founderName":null,"productName":"家居生活用品，美食美器，目前是咖啡器具及咖啡","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":454,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":453,"code":533,"city":null,"companyName":"杭州今韵生物科技有限公司","brand":"今韵","isEdit":0,"founderName":null,"productName":"牙膏、面膜、口红、唇膏等护肤产品","productType":null,"productCategory":null,"packageName":"13.9B","contractEndTime":1565193600000,"contractId":453,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":452,"code":532,"city":null,"companyName":"上海馥语文化传播有限公司","brand":"时光馥","isEdit":0,"founderName":null,"productName":"香水","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":452,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":451,"code":531,"city":null,"companyName":"深圳山田土文化传播有限公司","brand":"山田土","isEdit":0,"founderName":null,"productName":"茶叶","productType":null,"productCategory":null,"packageName":"2.9D","contractEndTime":1565193600000,"contractId":451,"contractType":null,"packageId":3,"allRightsSize":16,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":450,"code":530,"city":null,"companyName":"四川省德仁和农业开发有限公司","brand":"麦匠人","isEdit":0,"founderName":null,"productName":"麦匠人有机面粉 、麦匠人有机面条","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":450,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":449,"code":529,"city":null,"companyName":"重庆航粒香商贸有限公司","brand":"航粒香","isEdit":0,"founderName":null,"productName":"航粒香玉晶香有机大米、航粒香天府璀钻有机大米、航粒香稻花香有机大米、航粒香柳香米珠有机大米、航粒香溪夏壹品香有机大米。","productType":null,"productCategory":null,"packageName":"13.9A","contractEndTime":1565193600000,"contractId":449,"contractType":null,"packageId":8,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":447,"code":528,"city":null,"companyName":"九州天润中药产业有限公司","brand":"九信","isEdit":0,"founderName":null,"productName":"枸杞子","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":447,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":445,"code":527,"city":null,"companyName":"杭州易杯食品科技有限公司","brand":"Onecup","isEdit":0,"founderName":null,"productName":"胶囊机、胶囊","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":445,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":510,"code":525,"city":null,"companyName":"北京乐纯悠品商贸有限公司","brand":"乐纯","isEdit":0,"founderName":null,"productName":"酸奶","productType":null,"productCategory":null,"packageName":"BD","contractEndTime":1565193600000,"contractId":510,"contractType":null,"packageId":30003,"allRightsSize":0,"usedRightsSize":0,"isComplete":true,"isInvoice":false,"invoiceVO":null},{"id":444,"code":524,"city":null,"companyName":"深圳市得失服饰有限公司","brand":"YOEYYOU","isEdit":0,"founderName":null,"productName":"中高端轻奢女装","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":444,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":443,"code":523,"city":null,"companyName":"西安创客村电子商务有限责任公司","brand":"可丽金","isEdit":0,"founderName":null,"productName":"个护化妆、保健食品","productType":null,"productCategory":null,"packageName":"13.9A","contractEndTime":1565193600000,"contractId":443,"contractType":null,"packageId":8,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":442,"code":522,"city":null,"companyName":"深圳市柔宇科技有限公司","brand":"柔宇科技","isEdit":0,"founderName":null,"productName":"蝉翼柔性显示屏、智能手写本，可折叠手机FlexPai","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":442,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":441,"code":521,"city":null,"companyName":"颐和木兰（北京）文化发展有限公司","brand":"颐和木兰","isEdit":0,"founderName":null,"productName":"首饰，配饰","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":441,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":440,"code":520,"city":null,"companyName":"贵阳优农谷食品有限公司","brand":"蜡笔美厨","isEdit":0,"founderName":null,"productName":"午餐肉","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":440,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":439,"code":519,"city":null,"companyName":"南京汉鼎石材有限公司","brand":"拈花石艺","isEdit":0,"founderName":null,"productName":"石材类花器器、煮茶器器、⼯工艺品","productType":null,"productCategory":null,"packageName":"13.9A","contractEndTime":1565193600000,"contractId":439,"contractType":null,"packageId":8,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":438,"code":518,"city":null,"companyName":"杭州乐乐食品厂","brand":"利民","isEdit":0,"founderName":null,"productName":"中式点心 苏月 素月 蛋黄酥 绿豆糕 凤梨酥等","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":438,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":437,"code":517,"city":null,"companyName":"广州紫麦科技有限公司","brand":"麦本本","isEdit":0,"founderName":null,"productName":"笔记本电脑、3C数码配件、影音电器、生活耗材等","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":437,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":436,"code":516,"city":null,"companyName":"上海音奥网络科技有限公司","brand":"从米开始","isEdit":0,"founderName":null,"productName":"大米及其他谷类产品","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":436,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":430,"code":515,"city":null,"companyName":"怀山堂生物科技股份有限公司","brand":"怀山堂","isEdit":0,"founderName":null,"productName":"山药粉，山药复合粉","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":430,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":435,"code":514,"city":null,"companyName":"无锡品家科技有限公司","brand":"娇棠","isEdit":0,"founderName":null,"productName":" 美妆个护","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":435,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":434,"code":513,"city":null,"companyName":"无锡薛泰丰副食品有限公司","brand":"薛泰丰","isEdit":0,"founderName":null,"productName":"古法晒制酱油","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":434,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":433,"code":512,"city":null,"companyName":"江苏美罗家用纺织品有限公司","brand":"恬谧","isEdit":0,"founderName":null,"productName":"床品四件套、多件套、被芯、枕芯、夏凉品","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":433,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":432,"code":511,"city":null,"companyName":"北京粱大侠酒业有限公司","brand":"粱大侠","isEdit":0,"founderName":null,"productName":"白酒","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":432,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":431,"code":510,"city":null,"companyName":"杭州禾亭网络科技有限公司","brand":"懒先森","isEdit":0,"founderName":null,"productName":"懒人沙发","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":431,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":428,"code":509,"city":null,"companyName":"杭州黑马人科技有限公司","brand":"黑马人   ","isEdit":0,"founderName":null,"productName":"茶、咖啡、甜品、油条、休闲能量代餐食品","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":428,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":299,"code":508,"city":null,"companyName":"淮安斯米兰商贸有限公司","brand":"佳韵宝","isEdit":0,"founderName":null,"productName":"孕产用品（孕妇枕 哺乳枕 待产包 托腹裤  哺乳文胸 孕妇内衣裤 新生儿用品等）","productType":null,"productCategory":null,"packageName":"13.9B","contractEndTime":1565193600000,"contractId":299,"contractType":null,"packageId":9,"allRightsSize":17,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":427,"code":507,"city":null,"companyName":"山西基点商贸集团有限公司","brand":"CC卡美珠宝","isEdit":0,"founderName":null,"productName":"珠宝首饰","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":427,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null},{"id":426,"code":506,"city":null,"companyName":"云南宣威火腿集团有限责任公司","brand":"宣字","isEdit":0,"founderName":null,"productName":"宣字整腿（2年、3年）、宣字火腿皇冠装、宣字生吃片、宣字煲汤宝、宣字火腿肥瘦块装、宣字火腿小饼、宣字火腿丁、宣字火腿家庭装","productType":null,"productCategory":null,"packageName":"3.9","contractEndTime":1565193600000,"contractId":426,"contractType":null,"packageId":10,"allRightsSize":8,"usedRightsSize":0,"isComplete":false,"isInvoice":false,"invoiceVO":null}]}}'
+Arguments: ()
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test.activity_page.Test_activity_page</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1_10</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>test.sys_user_add.Test_add_sys_user</td>
+    <td>10</td>
+    <td>0</td>
+    <td>10</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',10)">Detail</a></td>
+</tr>
+
+<tr id='ft6.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_Operation</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.1')" >
+        fail</a>
+
+    <div id='div_ft6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.1: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 89, in test_add_sys_user_Operation
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': '运营001', 'password': '1234567', 'roleIdList': [2], 'userId': 0, 'username': 'ceshi111'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 93, in test_add_sys_user_Operation
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_admin_operation</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.2')" >
+        fail</a>
+
+    <div id='div_ft6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.2: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 122, in test_add_sys_user_admin_operation
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': 'admin+运营', 'password': '1234567', 'roleIdList': [1, 2], 'userId': 0, 'username': 'ceshi113'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 126, in test_add_sys_user_admin_operation
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_admin_xs</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.3')" >
+        fail</a>
+
+    <div id='div_ft6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.3: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 139, in test_add_sys_user_admin_xs
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': 'admin+销售', 'password': '1234567', 'roleIdList': [1, 3], 'userId': 0, 'username': 'ceshi114'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 143, in test_add_sys_user_admin_xs
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_all</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.4')" >
+        fail</a>
+
+    <div id='div_ft6.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.4: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 173, in test_add_sys_user_all
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': 'admin+销售+运营', 'password': '1234567', 'roleIdList': [1, 2, 3], 'userId': 0, 'username': 'ceshi114'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 177, in test_add_sys_user_all
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_long_username</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.5')" >
+        fail</a>
+
+    <div id='div_ft6.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.5: {"code":1000,"msg":"request is forbidden"}
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 59, in test_add_sys_user_long_username
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名过长'
+- request is forbidden
++ 用户名过长
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_operation_xs</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.6')" >
+        fail</a>
+
+    <div id='div_ft6.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.6: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 156, in test_add_sys_user_operation_xs
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': '运营+销售', 'password': '1234567', 'roleIdList': [2, 3], 'userId': 0, 'username': 'ceshi115'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 160, in test_add_sys_user_operation_xs
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_shot_username</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.7')" >
+        fail</a>
+
+    <div id='div_ft6.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.7: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 72, in test_add_sys_user_shot_username
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': '5231', 'password': '1234567', 'roleIdList': [1], 'userId': 0, 'username': 'xu'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 76, in test_add_sys_user_shot_username
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_ture</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.8')" >
+        fail</a>
+
+    <div id='div_ft6.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.8: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 20, in test_add_sys_user_ture
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'password': '123456', 'name': '123888', 'roleIdList': [1], 'username': 'xuxu009'}, 'success')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 24, in test_add_sys_user_ture
+    self.assertEqual(r,expect)
+AssertionError: 'request is forbidden' != 'success'
+- request is forbidden
++ success
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_username_repeat</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.9')" >
+        fail</a>
+
+    <div id='div_ft6.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.9: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 37, in test_add_sys_user_username_repeat
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': '5231', 'password': '1234567', 'roleIdList': [1], 'userId': 0, 'username': 'xuxu008'}, '用户名已存在')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 41, in test_add_sys_user_username_repeat
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名已存在'
+- request is forbidden
++ 用户名已存在
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_sys_user_xs</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.10')" >
+        fail</a>
+
+    <div id='div_ft6.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.10: --- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 1034, in emit
+    msg = self.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 880, in format
+    return fmt.format(record)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 619, in format
+    record.message = record.getMessage()
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\logging\__init__.py", line 380, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "run_as.py", line 53, in &lt;module&gt;
+    runner.run(suite())
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\HTMLTestRunner.py", line 628, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\suite.py", line 122, in run
+    test(result)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 663, in __call__
+    return self.run(*args, **kwds)
+  File "C:\Users\daiba\AppData\Local\Programs\Python\Python37\lib\unittest\case.py", line 615, in run
+    testMethod()
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 106, in test_add_sys_user_xs
+    logger.info(self.url, self.header, data, expect)
+Message: 'https://api.inewmaker.com/sys/user/add'
+Arguments: ({'Content-Type': 'application/json', 'Authorization': '695927bb21f0019e910d254aa60a4b9b'}, {'name': '销售001', 'password': '1234567', 'roleIdList': [3], 'userId': 0, 'username': 'ceshi112'}, '用户名太短')
+Traceback (most recent call last):
+  File "C:\Users\daiba\PycharmProjects\unittest_test\test\sys_user_add.py", line 110, in test_add_sys_user_xs
+    self.assertEqual(r, expect)
+AssertionError: 'request is forbidden' != '用户名太短'
+- request is forbidden
++ 用户名太短
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>27</td>
+    <td>14</td>
+    <td>13</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

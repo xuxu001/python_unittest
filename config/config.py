@@ -1,4 +1,4 @@
-
+#coding:utf-8
 
 host = 'https://api.inewmaker.com'
 header1 = {"Content-Type": "application/json"}
@@ -16,7 +16,8 @@ filename = os.path.join(report_path,'api_log'+now+'.text')
 # ft =open(file,'wb+')
 #
 # logging.basicConfig(filename=ft)
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + r'\..')  # ·µ»Ø½Å±¾µÄÂ·¾¶
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + r'\..')  # è¿”å›žè„šæœ¬çš„è·¯å¾„
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
